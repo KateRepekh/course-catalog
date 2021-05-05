@@ -11,5 +11,5 @@ class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = ['name']
-    filterset_fields = ['start_date', 'end_date']
+    search_fields = ["name"]
+    filterset_fields = ["start_date", "end_date"]

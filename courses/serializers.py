@@ -10,7 +10,15 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, data):
-        if data['start_date'] > data['end_date']:
+
+        def patch_field(key):
+            value = data.get(key)
+            return value if value else self.instance.__dict__[key]
+
+        start_date = patch_field('start_date')
+        end_date = patch_field('end_date')
+            
+        if start_date > end_date:
             raise serializers.ValidationError(
                 "A course can't end before it starts"
             )

@@ -17,5 +17,5 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path("api/", include("courses.urls")),
+    path("", include("courses.urls")),
 ]
